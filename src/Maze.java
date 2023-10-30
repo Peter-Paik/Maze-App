@@ -19,7 +19,7 @@ public class Maze {
             this.maze = new Square[numRows][numCols];
             int count = 0;
             while(in.hasNext()){
-                s = in.hasNext();
+                s = in.next();
                 this.maze[count/numCols][count%numCols] = new Square(count/numCols,count%numCols,Character.getNumericValue(s.charAt(0)));
             }
         
