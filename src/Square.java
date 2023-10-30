@@ -17,6 +17,11 @@ public class Square {
         return this.type;
     }
 
+    public void reset(){ //reset square to initial state
+        if(this.type>=4)
+            this.type = 0;
+    }
+
     public String toString(){
         /*
         * _ = emptyspace (0)
