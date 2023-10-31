@@ -6,6 +6,7 @@ public class MazeTester {
         System.out.println(mz.loadMaze("src/maze-1"));
         System.out.println(mz.getStart());
         System.out.println(mz.getFinish());
+        System.out.println(mz.getNeighbors(mz.getStart()));
         System.out.println("*******      " + "        *************");
         Maze mz7 = new Maze();
         System.out.println(mz7.loadMaze("src/maze-50a"));
