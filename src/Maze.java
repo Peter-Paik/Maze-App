@@ -15,11 +15,11 @@ public class Maze {
 
     public boolean loadMaze(String fname){
         try(Scanner in = new Scanner(new File(fname))){
-            String s = in.nextLine();
-            int numRows = Character.getNumericValue(s.charAt(0));
-            int numCols = Character.getNumericValue(s.charAt(2));
+            int numRows = Integer.parseInt(in.next());
+            int numCols = Integer.parseInt(in.next());
             this.maze = new Square[numRows][numCols];
             int count = 0;
+            String s;
             while(in.hasNext()){
                 s = in.next();
                 this.maze[count/numCols][count%numCols] = new Square(count/numCols,count%numCols,Character.getNumericValue(s.charAt(0)));
