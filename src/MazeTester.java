@@ -1,7 +1,6 @@
 public class MazeTester {
 
     public static void main(String[] args){
-        System.out.println("Running");
         Maze mz = new Maze();
         System.out.println(mz.loadMaze("src/maze-1"));
         System.out.println(mz.getStart());
