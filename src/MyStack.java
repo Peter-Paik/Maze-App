@@ -3,9 +3,13 @@ import java.util.*;
 
 public class MyStack implements StackADT<Square>{
 
-    private ArrayList<Square> list = new ArrayList<Square>();
+    private ArrayList<Square> list;
     
+    public MyStack() {
+        list = new ArrayList<Square>();
+    }
 
+    
 
      public void push(Square item){
         list.add(item);
@@ -61,6 +65,8 @@ public class MyStack implements StackADT<Square>{
         list.clear();
 
     }
+
+    
 
 
 
