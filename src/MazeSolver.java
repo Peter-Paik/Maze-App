@@ -2,6 +2,10 @@ import java.util.*;
 public abstract class MazeSolver {
     protected Maze maze;
 
+    public MazeSolver(){
+        
+    }
+
     abstract void makeEmpty();
     abstract boolean isEmpty();
     abstract void add(Square sq);
