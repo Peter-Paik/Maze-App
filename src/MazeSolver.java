@@ -15,6 +15,9 @@ public abstract class MazeSolver {
 
     public MazeSolver(Maze maze){
         this.maze = maze;
+        makeEmpty();
+        System.out.println(maze.getStart());
+        add(maze.getStart());
     }
 
 

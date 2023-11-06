@@ -3,20 +3,20 @@ public class MazeSolverQueue extends MazeSolver {
     
     public MazeSolverQueue(Maze maze){
         super(maze);
-        makeEmpty();
     }
 
     public void makeEmpty(){
         this.worklist = new MyQueue();
     }
     public boolean isEmpty(){
-        return worklist.isEmpty();
+        return this.worklist.isEmpty();
     }
     public void add(Square sq){
-        worklist.enqueue(sq);
+        this.worklist.enqueue(sq);
     }
     public Square next(){
-        return worklist.dequeue();
+        System.out.println(this.worklist.size());
+        return this.worklist.dequeue();
     }
 
 }

@@ -3,23 +3,23 @@ public class MazeSolverStack extends MazeSolver{
 
     public MazeSolverStack(Maze maze){
         super(maze);
-        stack =  new MyStack();
     }
 
     public Square next(){
-        return stack.pop();
+        System.out.println(this.stack.size());
+        return this.stack.pop();
     }
 
     public boolean isEmpty(){
-        return stack.isEmpty();
+        return this.stack.isEmpty();
     }
 
     public void makeEmpty(){
-        stack.clear();
+        this.stack = new MyStack();
     }
 
     public void add(Square sq){
-        stack.push(sq);
+        this.stack.push(sq);
     }
 
 

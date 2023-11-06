@@ -12,7 +12,8 @@ public class MyStack implements StackADT<Square>{
     
 
      public void push(Square item){
-        list.add(item);
+        this.list.add(item);
+        System.out.println(list.size());
      }
 
     /**
@@ -25,7 +26,7 @@ public class MyStack implements StackADT<Square>{
             throw new NoSuchElementException();
         }
         
-        return list.remove(0);
+        return list.remove(list.size()-1);
 
     }
 
