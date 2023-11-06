@@ -11,35 +11,56 @@ public abstract class MazeSolver {
     abstract void add(Square sq);
     abstract Square next();
     //Create a (non-abstract); //constructor that takes a Maze as a parameter and stores it in a variable that the children classes can access.
+
+
     public MazeSolver(Maze maze){
         this.maze = maze;
     }
+
+
     public boolean isSolved(){
         return step().getType() == 3||isEmpty();
     }
+
+
     //A non-abstract method that the application program can use to see if this algorithm has solved this maze. That is, has it determined the path to the exit or if there is no path.
     //This method will return true if either:
     //A path from the start to the exit has been found; OR
     //You determine there is no such path (worklist is now empty)
+
     public String getPath(){
+
+
         if(!isSolved())
             return "Not solved yet";
+
+
         else if(isSolved() && isEmpty())
             return "No solution";
+
+
         String path = "[" + maze.getFinish().getCol() + "," + maze.getFinish().getRow() + "]";
         Square sq = maze.getFinish();
+
+
         while(sq.getPrevious() != null){
             sq = sq.getPrevious();
             path += "[" + sq.getCol() + "," + sq.getRow() + "] " + path;
         }
         return path;
     }
+
+
     //Returns either a string of the solution path as a list of coordinates [i,j] from the start to the exit or a message indicating no such path exists
     //If the maze isn't solved, you should probably return a message indicating such.
+
+
     public Square step(){
+
         Square sq = next();
         ArrayList<Square> neighbors = new ArrayList<Square>(maze.getNeighbors(sq));
         for(Square n: neighbors){
+
             if(!n.isMarked() && !isSolved()){
                 n.setPrevious(sq);
                 n.mark();
