@@ -47,7 +47,7 @@ public class Maze {
             neighbors.add(this.maze[sq.getRow()][sq.getCol()+1]);
         if(sq.getRow()+1 <=this.maze.length)
             neighbors.add(this.maze[sq.getRow()+1][sq.getCol()]);
-        if(sq.getRow()-1 >=0)
+        if(sq.getCol()-1 >=0)
             neighbors.add(this.maze[sq.getRow()][sq.getCol()-1]);
 
         return neighbors;

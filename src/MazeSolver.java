@@ -10,19 +10,19 @@ public abstract class MazeSolver {
     abstract boolean isEmpty();
     abstract void add(Square sq);
     abstract Square next();
+    abstract Square nextItem();
     //Create a (non-abstract); //constructor that takes a Maze as a parameter and stores it in a variable that the children classes can access.
 
 
     public MazeSolver(Maze maze){
         this.maze = maze;
         makeEmpty();
-        System.out.println(maze.getStart());
         add(maze.getStart());
     }
 
 
     public boolean isSolved(){
-        return step().getType() == 3||isEmpty();
+        return isEmpty() || nextItem().getType()== 3;
     }
 
 
@@ -60,11 +60,13 @@ public abstract class MazeSolver {
 
     public Square step(){
 
-        Square sq = next();
+        Square sq = nextItem();
         ArrayList<Square> neighbors = new ArrayList<Square>(maze.getNeighbors(sq));
         for(Square n: neighbors){
+            System.out.println("n" + isSolved());
 
-            if(!n.isMarked() && !isSolved()){
+            if(!n.isMarked() && n.getType() == 0 && !isSolved()){
+                System.out.println("ran");
                 n.setPrevious(sq);
                 n.mark();
                 add(n);
@@ -73,6 +75,7 @@ public abstract class MazeSolver {
                 System.out.println(getPath());
             }
         }
+        next();
 
         return sq;
     }

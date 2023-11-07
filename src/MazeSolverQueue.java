@@ -5,6 +5,10 @@ public class MazeSolverQueue extends MazeSolver {
         super(maze);
     }
 
+    public Square nextItem(){
+        return this.worklist.front();
+    }
+
     public void makeEmpty(){
         this.worklist = new MyQueue();
     }
@@ -15,7 +19,6 @@ public class MazeSolverQueue extends MazeSolver {
         this.worklist.enqueue(sq);
     }
     public Square next(){
-        System.out.println(this.worklist.size());
         return this.worklist.dequeue();
     }
 

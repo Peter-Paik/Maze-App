@@ -5,8 +5,11 @@ public class MazeSolverStack extends MazeSolver{
         super(maze);
     }
 
+    public Square nextItem(){
+        return this.stack.top();
+    }
+
     public Square next(){
-        System.out.println(this.stack.size());
         return this.stack.pop();
     }
 

@@ -13,7 +13,7 @@ public class MyStack implements StackADT<Square>{
 
      public void push(Square item){
         this.list.add(item);
-        System.out.println(list.size());
+        
      }
 
     /**
@@ -22,10 +22,10 @@ public class MyStack implements StackADT<Square>{
      * @throws NoSuchElementException if the stack is empty
      */
     public Square pop(){
+
         if(list.isEmpty()){
             throw new NoSuchElementException();
         }
-        
         return list.remove(list.size()-1);
 
     }
@@ -48,7 +48,7 @@ public class MyStack implements StackADT<Square>{
      * @return the number of items in the stack
      */
     public int size(){
-        return list.size() - 1;
+        return list.size();
     }
 
     /**
