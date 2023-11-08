@@ -25,6 +25,10 @@ public class Square {
         return this.marked;
     }
 
+    public void setType(int t){
+        this.type = t;
+    }
+
     public void mark(){
         this.marked = true;
     }

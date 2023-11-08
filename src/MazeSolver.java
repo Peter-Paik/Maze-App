@@ -33,7 +33,6 @@ public abstract class MazeSolver {
 
     public String getPath(){
 
-
         if(!isSolved())
             return "Not solved yet";
 
@@ -48,7 +47,9 @@ public abstract class MazeSolver {
 
         while(sq.getPrevious() != null){
             sq = sq.getPrevious();
-            path += "[" + sq.getCol() + "," + sq.getRow() + "] " + path;
+            if(sq.getType() != 2)
+                sq.setType(6);
+            path = "[" + sq.getCol() + "," + sq.getRow() + "] " + path;
         }
         return path;
     }
@@ -59,25 +60,33 @@ public abstract class MazeSolver {
 
 
     public Square step(){
+        System.out.println(nextItem());
+        if(isSolved())
+            return next();
 
-        Square sq = nextItem();
+        Square sq = next();
         ArrayList<Square> neighbors = new ArrayList<Square>(maze.getNeighbors(sq));
+        if(!(sq.getType()==2))
+            sq.setType(5);
         for(Square n: neighbors){
             System.out.println("n" + isSolved());
+            System.out.println(n.getCol() + ", " + n.getRow());
 
-            if(!n.isMarked() && n.getType() == 0 && !isSolved()){
+            if(!n.isMarked() && n.getType() == 0){
                 System.out.println("ran");
+                n.setPrevious(sq);
+                n.mark();
+                n.setType(4);
+                add(n);
+            }
+            else if (n.getType() == 3){
                 n.setPrevious(sq);
                 n.mark();
                 add(n);
             }
-            else if (isSolved()){
-                System.out.println(getPath());
-            }
         }
-        next();
-
         return sq;
+    
     }
     //perform one iteration of the algorithm above (i.e., steps 1 through 5) and return the Square that was just explored (and null if no such Square exists). Note that this is not an abstract method, that is, you should implement this method in the MazeSolver class by calling the abstract methods listed above.
     //In order to keep track of which squares have previously been added to the worklist, you will "mark" each square that you place in the worklist. Then, before you add a square to the worklist, you should first check that it is not marked (and if it is, refrain from adding it).

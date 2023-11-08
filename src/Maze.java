@@ -41,14 +41,18 @@ public class Maze {
 
     public ArrayList<Square> getNeighbors(Square sq){
         ArrayList<Square> neighbors = new ArrayList<Square>();
+        System.out.println("sq: " + sq + ": " + sq.getCol() + ", " + sq.getRow());
         if(sq.getRow()-1 >=0)
             neighbors.add(this.maze[sq.getRow()-1][sq.getCol()]);
-        if(sq.getCol()+1 <=this.maze[0].length)
+        if(sq.getCol()+1 <this.maze[0].length)
             neighbors.add(this.maze[sq.getRow()][sq.getCol()+1]);
-        if(sq.getRow()+1 <=this.maze.length)
+        if(sq.getRow()+1 <this.maze.length)
             neighbors.add(this.maze[sq.getRow()+1][sq.getCol()]);
         if(sq.getCol()-1 >=0)
             neighbors.add(this.maze[sq.getRow()][sq.getCol()-1]);
+        for(Square n:neighbors){
+            System.out.println(n +": " + n.getCol() +", " + n.getRow());
+        }
 
         return neighbors;
     }
