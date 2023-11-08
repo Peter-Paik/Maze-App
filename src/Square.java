@@ -1,9 +1,13 @@
 public class Square {
     private int row, col, type;
+    private boolean marked = false;
+    private Square previous;
+
     public Square(int row, int col, int type){
         this.row = row;
         this.col = col;
         this.type = type;
+        this.previous = null;
 
     }
 
@@ -17,9 +21,32 @@ public class Square {
         return this.type;
     }
 
+    public boolean isMarked(){
+        return this.marked;
+    }
+
+    public void setType(int t){
+        this.type = t;
+    }
+
+    public void mark(){
+        this.marked = true;
+    }
+
+    public void setPrevious(Square sq){
+        this.previous = sq;
+    }
+
+    public Square getPrevious(){
+        return this.previous;
+    }
+
     public void reset(){ //reset square to initial state
         if(this.type>=4)
             this.type = 0;
+        marked = false;
+        this.previous = null;
+
     }
 
     public String toString(){
