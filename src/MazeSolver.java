@@ -51,7 +51,7 @@ public abstract class MazeSolver {
                 sq.setType(6);
             path = "[" + sq.getCol() + "," + sq.getRow() + "] " + path;
         }
-        return path;
+        return "Maze is solved!" + "\n" + path;
     }
 
 
