@@ -47,8 +47,8 @@ public abstract class MazeSolver {
 
         while(sq.getPrevious() != null){
             sq = sq.getPrevious();
-            if(sq.getType() != 2)
-                sq.setType(6);
+            if(sq.getType() != 2){
+                sq.setType(6);System.out.println("ran");}
             path = "[" + sq.getCol() + "," + sq.getRow() + "] " + path;
         }
         return "Maze is solved!" + "\n" + path;
@@ -61,8 +61,8 @@ public abstract class MazeSolver {
 
     public Square step(){
         System.out.println(nextItem());
-        if(isSolved())
-            return next();
+        //if(isSolved())
+        //    return next();
 
         Square sq = next();
         ArrayList<Square> neighbors = new ArrayList<Square>(maze.getNeighbors(sq));
@@ -80,9 +80,14 @@ public abstract class MazeSolver {
                 add(n);
             }
             else if (n.getType() == 3){
+                System.out.println("ran");
                 n.setPrevious(sq);
                 n.mark();
+                makeEmpty();
                 add(n);
+                getPath();
+                return n;
+                
             }
         }
         return sq;
